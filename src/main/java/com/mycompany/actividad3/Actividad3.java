@@ -17,8 +17,8 @@ public class Actividad3 {
 
     // ===== Clase Card =====
     static class Card {
-        private String palo;   // tréboles, corazones, picas o diamantes
-        private String color;  // rojo o negro
+        private String palo;   // Tréboles, Corazones, Picas o Diamantes
+        private String color;  // Rojo o Negro
         private String valor;  // 2-10, A, J, Q, K
 
         public Card(String palo, String color, String valor) {
@@ -57,14 +57,19 @@ public class Actividad3 {
         // Mezclar
         public void shuffle() {
             Collections.shuffle(cartas);
-            System.out.println("Se mezcla el Deck.");
+            System.out.println("Se mezclo el Deck.");
+        }
+
+        public Deck(ArrayList<Card> cartas) {
+            this.cartas = cartas;
         }
 
         // Mostrar la primera carta y removerla
         public void head() {
             if (!cartas.isEmpty()) {
                 Card c = cartas.remove(0);
-                System.out.println(c + " Quedan " + cartas.size() + " cartas en deck.");
+                System.out.println(c.toString());
+                System.out.println("Quedan " + cartas.size() + " cartas en deck.");
             } else {
                 System.out.println("No quedan cartas.");
             }
@@ -75,7 +80,8 @@ public class Actividad3 {
             if (!cartas.isEmpty()) {
                 Random rand = new Random();
                 Card c = cartas.remove(rand.nextInt(cartas.size()));
-                System.out.println(c + " Quedan " + cartas.size() + " cartas en deck.");
+                System.out.println(c.toString());
+                System.out.println("Quedan " + cartas.size() + " cartas en deck.");
             } else {
                 System.out.println("No quedan cartas.");
             }
@@ -83,18 +89,16 @@ public class Actividad3 {
 
         // Regresar 5 cartas
         public void hand() {
-        if (cartas.size() >= 5) {
-            for (int i = 0; i < 5; i++) {
-                Card c = cartas.remove(0);
-                System.out.println(c);  // cada carta en una línea
+            if (cartas.size() >= 5) {
+                for (int i = 0; i < 5; i++) {
+                    Card c = cartas.remove(0);
+                    System.out.println(c);  // cada carta en una línea
+                }
+                System.out.println("Quedan " + cartas.size() + " cartas en deck.");
+            } else {
+                System.out.println("No hay suficientes cartas.");
             }
-        System.out.println("Quedan " + cartas.size() + " cartas en deck.");
-        } else {
-            System.out.println("No hay suficientes cartas.");
         }
-}
-        
-        
     }
 
     // ===== main para probar =====
